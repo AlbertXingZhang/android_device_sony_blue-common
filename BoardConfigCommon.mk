@@ -129,37 +129,5 @@ SOMC_CFG_SENSORS_COMPASS_AK8972 := yes
 TARGET_FUSE_SDCARD_UID := 2800
 TARGET_FUSE_SDCARD_GID := 2800
 
-BOARD_SEPOLICY_DIRS += \
-    device/sony/blue-common/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    file_contexts \
-    property_contexts \
-    te_macros \
-    bluetooth_loader.te \
-    bridge.te \
-    camera.te \
-    device.te \
-    dhcp.te \
-    domain.te \
-    drmserver.te \
-    file.te \
-    kickstart.te \
-    init.te \
-    mac_update.te \
-    mediaserver.te \
-    mpdecision.te \
-    netmgrd.te \
-    qmux.te \
-    rild.te \
-    rmt.te \
-    surfaceflinger.te \
-    system.te \
-    tee.te \
-    thermald.te \
-    ueventd.te \
-    vold.te \
-    wpa_supplicant.te
-
 # inherit from the proprietary version
 -include vendor/sony/blue-common/BoardConfigVendor.mk
