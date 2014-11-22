@@ -56,6 +56,12 @@ BOARD_USES_QC_TIME_SERVICES := true
 # Dumpstate
 BOARD_LIB_DUMPSTATE := libdumpstate.sony
 
+# Include an expanded selection of fonts
+EXTENDED_FONT_FOOTPRINT := true
+
+# Enable Minikin text layout engine (will be the default soon)
+USE_MINIKIN := true
+
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
 BOARD_WLAN_DEVICE                := qcwcn
@@ -100,20 +106,13 @@ BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 TARGET_RECOVERY_FSTAB := device/sony/blue-common/rootdir/fstab.qcom
 
 # QCOM/CAF hardware
-COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
 BOARD_USES_QCOM_HARDWARE := true
-TARGET_QCOM_AUDIO_VARIANT := caf
-TARGET_QCOM_DISPLAY_VARIANT := caf
-TARGET_QCOM_MEDIA_VARIANT := caf
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
 TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
-
-# QCOM enhanced A/V
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
 # Sensors
 SOMC_CFG_SENSORS := true
