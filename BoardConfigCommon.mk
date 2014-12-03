@@ -59,9 +59,6 @@ BOARD_LIB_DUMPSTATE := libdumpstate.sony
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
 
-# Enable Minikin text layout engine (will be the default soon)
-USE_MINIKIN := true
-
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
 BOARD_WLAN_DEVICE                := qcwcn
