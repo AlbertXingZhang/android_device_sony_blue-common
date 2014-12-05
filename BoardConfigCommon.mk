@@ -128,6 +128,9 @@ TARGET_FUSE_SDCARD_GID := 2800
 # Fix Adreno's INVAL
 BOARD_USES_LEGACY_MMAP := true
 
+# Memory allocator
+MALLOC_IMPL := dlmalloc
+
 BOARD_SEPOLICY_DIRS += \
     device/sony/blue-common/sepolicy/common \
     device/sony/blue-common/sepolicy/test \
