@@ -178,9 +178,10 @@ PRODUCT_PACKAGES += \
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-# Set default USB interface
+# USB
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
+    persist.sys.usb.config=mtp \
+    persist.sys.isUsbOtgEnabled=true
 
 # Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
