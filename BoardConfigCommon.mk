@@ -152,6 +152,7 @@ TW_INCLUDE_FUSE_EXFAT := true
 TW_MAX_BRIGHTNESS := 255
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight_1/brightness"
 TW_SECONDARY_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight_2/brightness"
+TARGET_RECOVERY_FSTAB = device/sony/blue-common/rootdir/twrp.fstab
 
 # SELinux
 BOARD_SEPOLICY_DIRS += \
