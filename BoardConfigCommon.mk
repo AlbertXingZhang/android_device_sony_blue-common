@@ -89,7 +89,7 @@ BLUETOOTH_HCI_USE_MCT := true
 BOARD_HAS_RIL_LEGACY_PAP := true
 
 # Needed for blobs
-COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
+TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
@@ -153,93 +153,40 @@ TW_MAX_BRIGHTNESS := 255
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight_1/brightness"
 TW_SECONDARY_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight_2/brightness"
 
+# SELinux
 BOARD_SEPOLICY_DIRS += \
-    device/sony/blue-common/sepolicy/common \
-    device/sony/blue-common/sepolicy/test \
+    device/sony/blue-common/sepolicy/common
 
 BOARD_SEPOLICY_UNION += \
-       genfs_contexts \
-       file_contexts \
-       service_contexts \
-       property_contexts \
-       te_macros \
-       device.te \
-       vold.te \
-       ueventd.te \
-       file.te \
-       property.te \
-       untrusted_app.te \
-       drmserver.te \
-       adbd.te \
-       app.te \
-       cnd.te \
-       system_server.te \
-       wpa_supplicant.te \
-       mediaserver.te \
-       msm_irqbalanced.te \
-       qmuxd.te \
-       netmgrd.te \
-       port-bridge.te \
-       atfwd.te \
-       radio.te \
-       smd_test.te \
-       qmi_ping.te \
-       qmi_test_service.te \
-       irsc_util.te \
-       netd.te \
-       rild.te \
-       diag.te \
-       diag_test.te \
-       audiod.te \
-       service.te \
-       system_app.te \
-       thermal-engine.te \
-       vm_bms.te \
-       global_macros.te \
-       system_app.te \
-       bluetooth.te \
-       init_shell.te \
-       mpdecision.te \
-       perfd.te \
-       mm-qcamerad.te \
-       domain.te \
-       init.te \
-       time_daemon.te \
-       rmt_storage.te \
-       rfs_access.te \
-       hvdcp.te \
-       qseecomd.te \
-       mcStarter.te \
-       keystore.te \
-       ims.te \
-       healthd.te \
-       charger_monitor.te \
-       surfaceflinger.te \
-       mm-pp-daemon.te \
-       wpa.te \
-       bootanim.te \
-       zygote.te \
-       mdm_helper.te \
-       peripheral_manager.te \
-       qcomsysd.te \
-       servicemanager.te \
-       usb_uicc_daemon.te \
-       adsprpcd.te \
-       qlogd.te \
-       ipacm.te \
-       dpmd.te \
-       ssr_setup.te \
-       subsystem_ramdump.te \
-       ssr_diag.te \
-       sectest.te \
-       location.te \
-       location_app.te \
-       seapp_contexts \
-       logd.te \
-       installd.te \
-       sensors.te \
-       sensors_test.te
-
+    file_contexts \
+    property_contexts \
+    te_macros \
+    bluetooth_loader.te \
+    bridge.te \
+    camera.te \
+    device.te \
+    dhcp.te \
+    domain.te \
+    drmserver.te \
+    file.te \
+    kickstart.te \
+    init.te \
+    mac_update.te \
+    mediaserver.te \
+    mpdecision.te \
+    netmgrd.te \
+    property.te \
+    property_contexts \
+    qmux.te \
+    rild.te \
+    rmt.te \
+    surfaceflinger.te \
+    system_server.te \
+    tee.te \
+    thermald.te \
+    ueventd.te \
+    vold.te \
+    wpa_supplicant.te
 
 # inherit from the proprietary version
 -include vendor/sony/blue-common/BoardConfigVendor.mk
