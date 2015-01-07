@@ -156,7 +156,7 @@ TARGET_RECOVERY_FSTAB = device/sony/blue-common/rootdir/twrp.fstab
 
 # SELinux
 BOARD_SEPOLICY_DIRS += \
-    device/sony/blue-common/sepolicy/common
+    device/sony/blue-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
     file_contexts \
