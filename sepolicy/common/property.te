@@ -1,5 +1,0 @@
-# property for uicc_daemon
-type uicc_prop, property_type;
-
-# property for camera
-type camera_prop, property_type;
