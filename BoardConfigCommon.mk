@@ -18,7 +18,7 @@ include device/sony/common/BoardConfigCommon.mk
 # inherit from msm8960-common
 include device/sony/msm8960-common/BoardConfigCommon.mk
 
-TARGET_SPECIFIC_HEADER_PATH := device/sony/blue-common/include
+TARGET_SPECIFIC_HEADER_PATH += device/sony/blue-common/include
 
 # Kernel properties
 TARGET_KERNEL_SOURCE := kernel/sony/msm8x60
@@ -155,40 +155,30 @@ TW_MAX_BRIGHTNESS := 255
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight_1/brightness"
 TW_SECONDARY_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight_2/brightness"
 
-# SELinux
+# Include common SE policies
+-include device/qcom/sepolicy/sepolicy.mk
+
 BOARD_SEPOLICY_DIRS += \
     device/sony/blue-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
     file_contexts \
-    property_contexts \
-    te_macros \
-    bluetooth_loader.te \
-    bridge.te \
-    camera.te \
-    device.te \
-    dhcp.te \
-    domain.te \
-    drmserver.te \
-    file.te \
-    kickstart.te \
+    bootanim.te \
+    illumination.te \
     init.te \
     mac_update.te \
     mediaserver.te \
-    mpdecision.te \
-    netmgrd.te \
-    property.te \
-    property_contexts \
-    qmux.te \
-    rild.te \
-    rmt.te \
+    platform_app.te \
+    rmt_storage.te \
+    secchand.te \
+    setup_fs.te \
     surfaceflinger.te \
+    system_app.te \
+    system_monitor.te \
     system_server.te \
-    tee.te \
-    thermald.te \
-    ueventd.te \
-    vold.te \
-    wpa_supplicant.te
+    tad_static.te \
+    ta_qmi_service.te \
+    updatemiscta.te
 
 # inherit from the proprietary version
 -include vendor/sony/blue-common/BoardConfigVendor.mk

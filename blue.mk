@@ -56,7 +56,7 @@ PRODUCT_COPY_FILES += \
 # Additional sbin stuff
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/sbin/wait4tad_static:root/sbin/wait4tad_static \
-    $(LOCAL_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static
+    $(LOCAL_PATH)/rootdir/system/bin/tad_static:system/bin/tad_static
 
 # Keys
 PRODUCT_COPY_FILES += \
@@ -89,7 +89,8 @@ PRODUCT_COPY_FILES += \
 
 # Prima wifi config
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
+    $(COMMON_PATH)/rootdir/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
+    $(COMMON_PATH)/rootdir/system/etc/xtwifi.conf:system/etc/xtwifi.conf
 
 # Script for fixing perms on internal sdcard
 PRODUCT_COPY_FILES += \
@@ -160,6 +161,10 @@ PRODUCT_PACKAGES += \
     camera.msm8960 \
     libmmcamera_interface \
     libmmcamera_interface2
+
+# Force use old camera api
+PRODUCT_PROPERTY_OVERRIDES += \
+    camera2.portability.force_api=1
 
 # Sensors
 PRODUCT_PACKAGES += \

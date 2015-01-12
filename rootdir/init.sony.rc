@@ -181,11 +181,11 @@ service mac-update /system/bin/mac-update
 
 # Sony: TrimArea Daemon
 # last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb) /128(kb))
-service tad_static /sbin/tad_static /dev/block/mmcblk0 1,16
+service tad_static /system/bin/tad_static /dev/block/mmcblk0 1,16
+    class trimarea
     user root
     group root
     socket tad stream 0660 system system
-    class trimarea
 
 service secchand /system/bin/secchand
     class core
@@ -221,9 +221,9 @@ service hw_config /system/bin/sh /system/etc/hw_config.sh
     oneshot
 
 service system_monitor /system/bin/system_monitor
-    socket sysmon stream 0660 root system
     class core
     user root
+    socket sysmon stream 0660 root system
 
 service dis_msm_therm /system/bin/sh /system/etc/disable_msm_thermal.sh
     class core
@@ -243,9 +243,9 @@ service cnd /system/bin/cnd
     socket cnd stream 660 root inet
 
 service illumination /system/bin/illumination_service
-    socket illumination stream 0660 root system
     class main
     user root
+    socket illumination stream 0660 root system
 
 # Time daemon
 service time_daemon /system/bin/time_daemon
