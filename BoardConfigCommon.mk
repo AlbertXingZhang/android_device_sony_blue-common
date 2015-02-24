@@ -173,8 +173,7 @@ BOARD_SEPOLICY_UNION += \
     system_server.te \
     tad_static.te \
     ta_qmi_service.te \
-    updatemiscta.te \
-    vold.te
+    updatemiscta.te
 
 # inherit from the proprietary version
 -include vendor/sony/blue-common/BoardConfigVendor.mk
