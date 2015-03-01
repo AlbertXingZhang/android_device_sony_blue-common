@@ -111,6 +111,7 @@ TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
 # ANC Headset is not yet implemented in CM12
 QCOM_ANC_HEADSET_ENABLED := false
+AUDIO_FEATURE_ENABLED_FM := true
 
 # Sensors
 SOMC_CFG_SENSORS := true

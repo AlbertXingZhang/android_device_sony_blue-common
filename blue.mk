@@ -160,6 +160,13 @@ PRODUCT_PACKAGES += \
     libmmcamera_interface \
     libmmcamera_interface2
 
+# FM radio
+PRODUCT_PACKAGES += \
+    qcom.fmradio \
+    libqcomfm_jni \
+    FM2 \
+    FMRecord
+
 # Force use old camera api
 PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
