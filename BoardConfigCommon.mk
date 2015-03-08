@@ -12,9 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# inherit from Sony common
-include device/sony/common/BoardConfigCommon.mk
-
 # inherit from msm8960-common
 include device/sony/msm8960-common/BoardConfigCommon.mk
 
@@ -25,22 +22,7 @@ TARGET_KERNEL_SOURCE := kernel/sony/msm8x60
 
 # Platform
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
-TARGET_BOARD_PLATFORM := msm8960
 BOARD_VENDOR_PLATFORM := blue
-
-# Architecture
-TARGET_GLOBAL_CFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
-COMMON_GLOBAL_CFLAGS += -D__ARM_USE_PLD -D__ARM_CACHE_LINE_SIZE=64
-TARGET_CPU_VARIANT := krait
-
-# Krait optimizations
-TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
-TARGET_USE_KRAIT_PLD_SET      := true
-TARGET_KRAIT_BIONIC_PLDOFFS   := 10
-TARGET_KRAIT_BIONIC_PLDTHRESH := 10
-TARGET_KRAIT_BIONIC_BBTHRESH  := 64
-TARGET_KRAIT_BIONIC_PLDSIZE   := 64
 
 # Kernel information
 BOARD_KERNEL_CMDLINE := # This is ignored by sony's bootloader
@@ -81,10 +63,6 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 TARGET_NO_RPC := true
 
-# Bluetooth
-BOARD_HAVE_BLUETOOTH_QCOM := true
-BLUETOOTH_HCI_USE_MCT := true
-
 # RIL
 BOARD_HAS_RIL_LEGACY_PAP := true
 
@@ -101,11 +79,7 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/sony/blue-common
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 TARGET_RECOVERY_FSTAB = device/sony/blue-common/rootdir/twrp.fstab
 
-# QCOM/CAF hardware
-BOARD_USES_QCOM_HARDWARE := true
-
 # Audio
-BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
 TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
@@ -147,7 +121,7 @@ TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight_1/brightness"
 TW_SECONDARY_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight_2/brightness"
 
 # Include common SE policies
--include device/qcom/sepolicy/sepolicy.mk
+include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += \
     device/sony/blue-common/sepolicy
