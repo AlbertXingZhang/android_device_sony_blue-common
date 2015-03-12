@@ -65,6 +65,7 @@ TARGET_NO_RPC := true
 
 # RIL
 BOARD_HAS_RIL_LEGACY_PAP := true
+BOARD_USES_RIL_APPEND_RAT_TO_PLMN := true
 
 # Needed for blobs
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
@@ -83,8 +84,6 @@ TARGET_RECOVERY_FSTAB = device/sony/blue-common/rootdir/twrp.fstab
 BOARD_USES_LEGACY_ALSA_AUDIO := true
 TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
-# ANC Headset is not yet implemented in CM12
-QCOM_ANC_HEADSET_ENABLED := false
 AUDIO_FEATURE_ENABLED_FM := true
 
 # Sensors
