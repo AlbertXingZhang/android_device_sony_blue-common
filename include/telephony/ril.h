@@ -870,6 +870,7 @@ typedef enum {
 typedef struct {
     int signalStrength;  /* Valid values are (0-31, 99) as defined in TS 27.007 8.5 */
     int bitErrorRate;    /* bit error rate (0-7, 99) as defined in TS 27.007 8.5 */
+    int WhatIsThatSony;  /* What is that Sony ? */
 } RIL_GW_SignalStrength;
 
 typedef struct {
