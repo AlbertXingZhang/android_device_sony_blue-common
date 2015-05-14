@@ -84,6 +84,7 @@ TARGET_RECOVERY_FSTAB = device/sony/blue-common/rootdir/twrp.fstab
 BOARD_USES_LEGACY_ALSA_AUDIO := true
 TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
+QCOM_FM_ENABLED := true
 AUDIO_FEATURE_ENABLED_FM := true
 
 # Sensors

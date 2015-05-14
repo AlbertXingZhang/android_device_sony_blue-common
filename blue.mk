@@ -205,6 +205,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.handset.mic=analog \
     persist.audio.lowlatency.rec=false
 
+# FM
+PRODUCT_PROPERTY_OVERRIDES += \
+    hw.fm.internal_antenna=true
+
 # QCOM Location
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.izat.premium_enabled=0 \
