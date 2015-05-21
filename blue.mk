@@ -207,7 +207,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # FM
 PRODUCT_PROPERTY_OVERRIDES += \
-    hw.fm.internal_antenna=true
+    hw.fm.internal_antenna=true \
     ro.fm.transmitter=true
 
 # QCOM Location
