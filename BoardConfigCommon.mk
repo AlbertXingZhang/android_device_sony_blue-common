@@ -78,7 +78,7 @@ TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/blue-common/custombootimg.mk
 TARGET_RELEASETOOLS_EXTENSIONS := device/sony/blue-common
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
-TARGET_RECOVERY_FSTAB = device/sony/blue-common/rootdir/twrp.fstab
+TARGET_RECOVERY_FSTAB = device/sony/blue-common/rootdir/fstab.qcom
 
 # Audio
 BOARD_USES_LEGACY_ALSA_AUDIO := true
@@ -102,6 +102,7 @@ BOARD_USES_LEGACY_MMAP := true
 
 # TWRP flags
 DEVICE_RESOLUTION := 720x1280
+RECOVERY_VARIANT := twrp
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TW_HAS_NO_RECOVERY_PARTITION := true
 TW_FLASH_FROM_STORAGE := true
