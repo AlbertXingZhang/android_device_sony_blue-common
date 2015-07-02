@@ -32,14 +32,14 @@ BOARD_KERNEL_PAGESIZE := 2048
 SONY_FORCE_RAMDISK_ADDRESS := 0x81900000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01700000
 
-# Use legacy MMAP for pre-lollipop blobs
-BOARD_USES_LEGACY_MMAP := true
-
 # Time
 BOARD_USES_QC_TIME_SERVICES := true
 
 # Dumpstate
 BOARD_LIB_DUMPSTATE := libdumpstate.sony
+
+# Include an expanded selection of fonts
+EXTENDED_FONT_FOOTPRINT := true
 
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
@@ -66,6 +66,7 @@ TARGET_NO_RPC := true
 # RIL
 BOARD_PROVIDES_LIBRIL := true
 BOARD_HAS_RIL_LEGACY_PAP := true
+BOARD_USES_RIL_APPEND_RAT_TO_PLMN := true
 
 # Needed for blobs
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
@@ -85,6 +86,8 @@ TARGET_RECOVERY_FSTAB := device/sony/blue-common/rootdir/fstab.qcom
 BOARD_USES_LEGACY_ALSA_AUDIO := true
 TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
+QCOM_FM_ENABLED := true
+AUDIO_FEATURE_ENABLED_FM := true
 
 # Sensors
 SOMC_CFG_SENSORS := true
@@ -95,6 +98,30 @@ SOMC_CFG_SENSORS_GYRO_MPU3050 := yes
 SOMC_CFG_SENSORS_PROXIMITY_APDS9702 := yes
 SOMC_CFG_SENSORS_ACCEL_BMA250NA_INPUT := yes
 SOMC_CFG_SENSORS_COMPASS_AK8972 := yes
+
+# Fix Adreno's INVAL
+BOARD_USES_LEGACY_MMAP := true
+
+# TWRP flags
+DEVICE_RESOLUTION := 720x1280
+RECOVERY_VARIANT := twrp
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TW_HAS_NO_RECOVERY_PARTITION := true
+TW_FLASH_FROM_STORAGE := true
+TW_EXTERNAL_STORAGE_PATH := "/external_sd"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+TW_DEFAULT_EXTERNAL_STORAGE := true
+TW_INCLUDE_CRYPTO := true
+TW_CRYPTO_FS_TYPE := "ext4"
+TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/msm_sdcc.1/by-name/Userdata"
+TW_CRYPTO_MNT_POINT := "/data"
+TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,barrier=1,noauto_da_alloc,discard"
+TW_CRYPTO_FS_FLAGS := "0x00000406"
+TW_CRYPTO_KEY_LOC := "footer"
+TW_INCLUDE_FUSE_EXFAT := true
+TW_MAX_BRIGHTNESS := 255
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight_1/brightness"
+TW_SECONDARY_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight_2/brightness"
 
 # Include common SE policies
 include device/qcom/sepolicy/sepolicy.mk

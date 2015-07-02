@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+TARGET_PROVIDES_ADRENO_DRIVER := true
 # inherit from msm8960-common
 $(call inherit-product, device/sony/msm8960-common/msm8960.mk)
 
@@ -47,7 +48,8 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom \
     $(COMMON_PATH)/rootdir/init.recovery.qcom.rc:root/init.recovery.qcom.rc \
     $(COMMON_PATH)/rootdir/system/etc/init.sony.bt.sh:system/etc/init.sony.bt.sh \
-    $(COMMON_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
+    $(COMMON_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc \
+    $(COMMON_PATH)/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # Additional sbin stuff
 PRODUCT_COPY_FILES += \
@@ -91,6 +93,10 @@ PRODUCT_COPY_FILES += \
 # Script for fixing perms on internal sdcard during update
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/tools/fix_storage_permissions.sh:install/bin/fix_storage_permissions.sh
+
+# Post recovery script
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
 
 # Sensors
 PRODUCT_COPY_FILES += \
@@ -153,6 +159,13 @@ PRODUCT_PACKAGES += \
     libmmcamera_interface \
     libmmcamera_interface2
 
+# FM radio
+PRODUCT_PACKAGES += \
+    qcom.fmradio \
+    libqcomfm_jni \
+    FM2 \
+    FMRecord
+
 # Force use old camera api
 PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
@@ -174,7 +187,8 @@ PRODUCT_PACKAGES += \
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
+    persist.sys.usb.config=mtp \
+    persist.sys.isUsbOtgEnabled=true
 
 # USB OTG support
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -194,6 +208,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.mode=endfire \
     persist.audio.handset.mic=analog \
     persist.audio.lowlatency.rec=false
+
+# FM
+PRODUCT_PROPERTY_OVERRIDES += \
+    hw.fm.internal_antenna=true \
+    ro.fm.transmitter=true
 
 # QCOM Location
 PRODUCT_PROPERTY_OVERRIDES += \
