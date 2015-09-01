@@ -12,10 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# inherit from msm8960-common
-include device/sony/msm8960-common/BoardConfigCommon.mk
+# Inherit from Sony common
+include device/sony/common/BoardConfigCommon.mk
 
 TARGET_SPECIFIC_HEADER_PATH += device/sony/blue-common/include
+
+# Architecture
+TARGET_ARCH := arm
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_VARIANT := krait
 
 # Kernel properties
 TARGET_KERNEL_SOURCE := kernel/sony/msm8x60
@@ -23,6 +30,7 @@ TARGET_KERNEL_SOURCE := kernel/sony/msm8x60
 # Platform
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 BOARD_VENDOR_PLATFORM := blue
+TARGET_BOARD_PLATFORM := msm8960
 
 # Kernel information
 BOARD_KERNEL_CMDLINE := # This is ignored by sony's bootloader
@@ -32,14 +40,47 @@ BOARD_KERNEL_PAGESIZE := 2048
 SONY_FORCE_RAMDISK_ADDRESS := 0x81900000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01700000
 
+# Bionic
+MALLOC_IMPL := dlmalloc
+
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_QCOM := true
+BLUETOOTH_HCI_USE_MCT := true
+
+# Board overrides
+TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
+
+# Camera
+TARGET_PROVIDES_CAMERA_HAL := true
+
+# Display HAL
+USE_OPENGL_RENDERER := true
+TARGET_USES_ION := true
+TARGET_USES_C2D_COMPOSITION := true
+
+# Font expansion
+EXTENDED_FONT_FOOTPRINT := true
+
+# Lights HAL
+TARGET_PROVIDES_LIBLIGHT := true
+
+# Power HAL
+TARGET_POWERHAL_VARIANT := qcom
+CM_POWERHAL_EXTENSION := qcom
+
+# QCOM hardware
+BOARD_USES_QCOM_HARDWARE := true
+
+# Use legacy MMAP for pre-lollipop blobs
+BOARD_USES_LEGACY_MMAP := true
+
 # Time
 BOARD_USES_QC_TIME_SERVICES := true
 
 # Dumpstate
 BOARD_LIB_DUMPSTATE := libdumpstate.sony
-
-# Include an expanded selection of fonts
-EXTENDED_FONT_FOOTPRINT := true
 
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
@@ -67,6 +108,7 @@ TARGET_NO_RPC := true
 BOARD_PROVIDES_LIBRIL := true
 BOARD_HAS_RIL_LEGACY_PAP := true
 BOARD_USES_RIL_APPEND_RAT_TO_PLMN := true
+BOARD_RIL_CLASS := ../../../device/sony/blue-common/ril/
 
 # Needed for blobs
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
@@ -83,6 +125,7 @@ BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 TARGET_RECOVERY_FSTAB := device/sony/blue-common/rootdir/fstab.qcom
 
 # Audio
+BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
 TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
@@ -97,9 +140,6 @@ SOMC_CFG_SENSORS_GYRO_MPU3050 := yes
 SOMC_CFG_SENSORS_PROXIMITY_APDS9702 := yes
 SOMC_CFG_SENSORS_ACCEL_BMA250NA_INPUT := yes
 SOMC_CFG_SENSORS_COMPASS_AK8972 := yes
-
-# Fix Adreno's INVAL
-BOARD_USES_LEGACY_MMAP := true
 
 # TWRP flags
 DEVICE_RESOLUTION := 720x1280
