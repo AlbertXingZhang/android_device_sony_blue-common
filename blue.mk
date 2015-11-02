@@ -215,6 +215,10 @@ PRODUCT_PACKAGES += \
     FM2 \
     FMRecord
 
+# Healthd
+PRODUCT_PACKAGES += \
+    charger_res_images
+
 # Force use old camera api
 PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1

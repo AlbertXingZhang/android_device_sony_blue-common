@@ -68,9 +68,6 @@ on early-boot
     #Run pre_hw_config.sh before entering charge only mode.
     exec /system/bin/sh /system/etc/pre_hw_config.sh
 
-    # Start the offline charging (This blocks booting further in some cases)
-    exec /system/bin/chargemon
-
     # Touch firmware update
     exec /system/bin/sh /system/etc/clearpad_fwloader.sh
 
@@ -139,6 +136,9 @@ on boot
     write /proc/sys/net/ipv6/conf/rmnet_sdio7/accept_ra 2
 
 on charger
+    # persist.sys.usb.config is defined in default.prop, override it
+    setprop persist.sys.usb.config mass_storage
+
     # Enable Power modes and set the CPU Freq Sampling rates
     write /sys/module/rpm_resources/enable_low_power/L2_cache 1
     write /sys/module/rpm_resources/enable_low_power/pxo 1
@@ -167,6 +167,11 @@ service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 /mnt/media_rw/sd
 service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -w 1023 /mnt/media_rw/usbdisk /storage/usbdisk
     class late_start
     disabled
+
+# Healthd
+service charger /sbin/healthd -c
+    class charger
+    seclabel u:r:healthd:s0
 
 service rmt_storage /system/bin/rmt_storage
     class core
