@@ -2,7 +2,7 @@ LOCAL_PATH := $(call my-dir)
 
 uncompressed_ramdisk := $(PRODUCT_OUT)/ramdisk.cpio
 $(uncompressed_ramdisk): $(INSTALLED_RAMDISK_TARGET)
-	zcat $< > $@
+	gunzip -c $< > $@
 
 MKELF := $(LOCAL_PATH)/tools/mkelf.py
 INITSH := $(LOCAL_PATH)/combinedroot/init.sh
