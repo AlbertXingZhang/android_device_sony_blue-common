@@ -113,6 +113,11 @@ BOARD_RIL_CLASS := ../../../device/sony/blue-common/ril/
 # Healthd
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
+BACKLIGHT_PATH := /sys/class/leds/lcd-backlight_1/brightness
+SECONDARY_BACKLIGHT_PATH := /sys/class/leds/lcd-backlight_2/brightness
+RED_LED_PATH := /sys/class/leds/pwr-red/brightness
+GREEN_LED_PATH := /sys/class/leds/pwr-green/brightness
+BLUE_LED_PATH := /sys/class/leds/pwr-blue/brightness
 
 # Needed for blobs
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
@@ -127,6 +132,11 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/sony/blue-common
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 
 TARGET_RECOVERY_FSTAB := device/sony/blue-common/rootdir/fstab.qcom
+
+# Recovery
+BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
@@ -176,6 +186,7 @@ BOARD_SEPOLICY_UNION += \
     file_contexts \
     property_contexts \
     bootanim.te \
+    healthd.te \
     illumination.te \
     init.te \
     mac_update.te \
